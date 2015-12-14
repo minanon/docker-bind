@@ -1,0 +1,9 @@
+zone "test.ym" {
+	type master;
+	file "/etc/bind/test.zone";
+};
+
+zone "mydns.ym" {
+	type master;
+	file "/etc/bind/test.zone";
+};
