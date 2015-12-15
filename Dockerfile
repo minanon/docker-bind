@@ -4,7 +4,7 @@ MAINTAINER minanon
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt-get install -y curl samba gcc make ca-certificates dnsutils libc6-dev libssl-dev libcap-dev --no-install-recommends \
+    && apt-get install -y curl samba gcc make ca-certificates dnsutils libc6-dev libssl-dev libkrb5-dev libcap-dev --no-install-recommends \
     && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # install bind
