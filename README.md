@@ -13,4 +13,4 @@ minanon
 
 ##RUN
 
-    docker run -d --name bind -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/named -d minanon/bind
+    docker run --name bind -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/bind --volumes-from <ad container name> -d bindtest:with-ad
