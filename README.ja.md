@@ -1,8 +1,8 @@
 #docker-bind
-BIND起動用Dockerfile
+ActiveDirecotry連動BIND起動用Dockerfile
 
 ##概要
-BINDを簡易起動する構成のDockerfileです。
+ActiveDirectoryと連動して動作するBINDを起動する構成のDockerfileです。
 
 ##Maintainer
 minanon
@@ -14,4 +14,4 @@ minanon
 ##起動方法
 以下のようなコマンドで実行します。
 
-    docker run -d --name bind -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/named -d minanon/bind
+    docker run -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/bind --volumes-from <samba container name> bindtest:with-ad
