@@ -2,8 +2,8 @@ FROM debian:stable
 
 MAINTAINER minanon
 
-RUN DEBIAN_FRONTEND=noninteractive \
-    && apt-get update \
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update \
     && apt-get install -y curl samba samba-vfs-modules gcc make ca-certificates dnsutils libc6-dev libssl-dev libkrb5-dev libcap-dev --no-install-recommends \
     && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
@@ -16,13 +16,12 @@ RUN curl -L 'https://www.isc.org/downloads/file/bind-9-10-3/?version=tar-gz' | t
 
 RUN useradd bind
 
-ADD add_files/bind /etc/bind
+COPY "add_files/bind" "/etc/bind"
 RUN cp -r /etc/bind /etc/bind.org
 
 EXPOSE 53/udp 53/tcp
 VOLUME [ "/etc/bind" ]
-ADD add_files/start.sh /start.sh
-ADD add_files/setup.sh /setup.sh
+COPY "add_files/start.sh" "add_files/setup.sh" "/"
 RUN chmod 755 /start.sh /setup.sh
 
 ENTRYPOINT [ "/setup.sh" ]

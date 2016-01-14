@@ -14,4 +14,4 @@ minanon
 ##起動方法
 以下のようなコマンドで実行します。
 
-    docker run -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/bind --volumes-from <samba container name> bindtest:with-ad
+    docker run -p 53:53/udp -p 53:53 -v /opt/docker/data/bind:/etc/bind --volumes-from <samba container name> -d bind:with-ad
